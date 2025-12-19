@@ -26,5 +26,5 @@ RUN mkdir -p /data /cron
 
 
 EXPOSE 8080
+CMD sh -c "cron && python -m uvicorn app.main:app --host 0.0.0.0 --port 8080"
 
-CMD cron && uvicorn app:app --host 0.0.0.0 --port 8080
