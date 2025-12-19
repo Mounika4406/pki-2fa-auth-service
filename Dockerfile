@@ -13,11 +13,14 @@ RUN pip install --no-cache-dir --default-timeout=120 -r requirements.txt
 
 COPY app app
 COPY scripts scripts
-COPY cron/2fa-cron /etc/cron.d/2fa-cron
-COPY student_private.pem student_private.pem
-RUN chmod 0644 /etc/cron.d/2fa-cron
 
-RUN mkdir /data /cron
+COPY student_private.pem student_private.pem
+
+COPY cron/2fa-cron /etc/cron.d/2fa-cron
+RUN chmod 0644 /etc/cron.d/2fa-cron
+RUN mkdir -p /data /cron
+
+
 
 EXPOSE 8080
 
