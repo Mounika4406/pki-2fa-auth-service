@@ -15,8 +15,8 @@ COPY app app
 COPY scripts scripts
 COPY cron/2fa-cron /etc/cron.d/2fa-cron
 COPY student_private.pem student_private.pem
+RUN chmod 0644 /etc/cron.d/2fa-cron
 
-RUN chmod 0644 /etc/cron.d/2fa-cron && crontab /etc/cron.d/2fa-cron
 RUN mkdir /data /cron
 
 EXPOSE 8080
